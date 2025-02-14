@@ -24,7 +24,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
   }
 
   Future<void> _initializeCamera() async {
-    _controller = CameraController(widget.cameras[0], ResolutionPreset.max);
+    _controller = CameraController(widget.cameras[0], ResolutionPreset.medium);
     await _controller.initialize();
     if (!mounted) return;
     setState(() => isInitialized = true);
