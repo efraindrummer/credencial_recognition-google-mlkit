@@ -24,7 +24,7 @@ class _CaptureScreenState extends State<CaptureScreen> {
   }
 
   Future<void> _initializeCamera() async {
-    _controller = CameraController(widget.cameras[0], ResolutionPreset.medium);
+    _controller = CameraController(widget.cameras[0], ResolutionPreset.max);
     await _controller.initialize();
     if (!mounted) return;
     setState(() => isInitialized = true);
@@ -66,27 +66,29 @@ class _CaptureScreenState extends State<CaptureScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Captura INE")),
-      body: Column(
-        children: [
-          isInitialized
-              ? Expanded(child: CameraPreview(_controller))
-              : Center(child: CircularProgressIndicator()),
-          ElevatedButton(
-            onPressed: _captureAndAnalyze,
-            child: Text("Capturar y Analizar"),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                extractedText.isNotEmpty
-                    ? "Texto Extraído:\n\n$extractedText"
-                    : "No hay texto capturado",
-                style: TextStyle(fontSize: 16),
+      body: Center(
+        child: Column(
+          children: [
+            isInitialized
+                ? Expanded(child: CameraPreview(_controller))
+                : Center(child: CircularProgressIndicator()),
+            ElevatedButton(
+              onPressed: _captureAndAnalyze,
+              child: Text("Capturar y Analizar"),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  extractedText.isNotEmpty
+                      ? "Texto Extraído:\n\n$extractedText"
+                      : "No hay texto capturado",
+                  style: TextStyle(fontSize: 16),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
