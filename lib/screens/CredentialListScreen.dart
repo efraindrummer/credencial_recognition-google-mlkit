@@ -5,7 +5,10 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CredentialListScreen extends StatefulWidget {
+  const CredentialListScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _CredentialListScreenState createState() => _CredentialListScreenState();
 }
 
@@ -44,7 +47,8 @@ class _CredentialListScreenState extends State<CredentialListScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ViewDataScreen(credentialData: _data[index]),
+                  builder:
+                      (context) => ViewDataScreen(credentialData: _data[index]),
                 ),
               );
             },
