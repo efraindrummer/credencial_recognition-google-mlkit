@@ -7,8 +7,11 @@ import 'package:path/path.dart';
 
 import 'package:path_provider/path_provider.dart';
 
+/* import 'package:firebase_core/firebase_core.dart'; */
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp(); //inicializacion de firebase
   final cameras = await availableCameras();
   runApp(MyApp(cameras: cameras));
   printDatabasePath();

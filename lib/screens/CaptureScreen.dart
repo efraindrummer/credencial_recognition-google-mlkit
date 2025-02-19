@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:path/path.dart';
@@ -6,9 +7,10 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 
 class CaptureScreen extends StatefulWidget {
   final List<CameraDescription> cameras;
-  CaptureScreen({required this.cameras});
+  const CaptureScreen({super.key, required this.cameras});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CaptureScreenState createState() => _CaptureScreenState();
 }
 
